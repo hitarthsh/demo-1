@@ -2,7 +2,7 @@ name: Backup Bitbucket to GitHub
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
@@ -10,11 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone Bitbucket Repo
+      - name: Clone Bitbucket Repo (mirror)
         run: |
+          set -e
           git clone --mirror https://${{ secrets.BITBUCKET_USERNAME }}:${{ secrets.BITBUCKET_APP_PASSWORD }}@bitbucket.org/hitarth-dev/demo.git
+
+      - name: Push to GitHub (mirror)
+        run: |
+          set -e
           cd demo.git
-
-          git remote add github https://${{ secrets.GITHUB_USERNAME }}:${{ secrets.GITHUB_TOKEN }}@github.com/hitarthsh/demo-1.git
-
+          git remote add github https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com/hitarthsh/demo-1.git
           git push --mirror github
