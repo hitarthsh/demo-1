@@ -1,8 +1,8 @@
 name: Backup Bitbucket to GitHub
 
 on:
-  repository_dispatch:
-    types: [bitbucket-sync]
+  schedule:
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 jobs:
