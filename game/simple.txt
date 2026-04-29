@@ -2,3 +2,5 @@ This is a simple file.
 Use it as a placeholder or example in the game folder.
 
 cusmc_site
+
+Hitarth Shah
