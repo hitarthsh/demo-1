@@ -5,6 +5,10 @@ on:
     types: [bitbucket-sync]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  workflows: write   # 👈 THIS IS THE FIX
+
 jobs:
   backup:
     runs-on: ubuntu-latest
